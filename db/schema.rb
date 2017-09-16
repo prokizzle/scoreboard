@@ -10,29 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170914222549) do
+ActiveRecord::Schema.define(version: 20170914222543) do
 
   create_table "games", force: :cascade do |t|
     t.datetime "start_time"
     t.datetime "end_time"
+    t.integer "service_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["service_id"], name: "index_games_on_service_id"
   end
 
   create_table "player_games", force: :cascade do |t|
     t.integer "player_id"
     t.string "outcome"
-    t.integer "points_id"
     t.integer "game_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["game_id"], name: "index_player_games_on_game_id"
     t.index ["player_id"], name: "index_player_games_on_player_id"
-    t.index ["points_id"], name: "index_player_games_on_points_id"
   end
 
   create_table "players", force: :cascade do |t|
-    t.string "name"
+    t.string "first_name"
+    t.string "last_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -44,15 +45,6 @@ ActiveRecord::Schema.define(version: 20170914222549) do
     t.datetime "updated_at", null: false
     t.index ["game_id"], name: "index_points_on_game_id"
     t.index ["player_id"], name: "index_points_on_player_id"
-  end
-
-  create_table "services", force: :cascade do |t|
-    t.integer "game_id"
-    t.integer "player_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["game_id"], name: "index_services_on_game_id"
-    t.index ["player_id"], name: "index_services_on_player_id"
   end
 
 end
