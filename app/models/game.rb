@@ -6,8 +6,8 @@ class Game < ApplicationRecord
         {
             id: id,
             service_id: service_id,
-            start_time: start_time,
-            end_time: end_time,
+            start_time: start_time.to_i,
+            end_time: end_time.presence.try(:to_i),
         }
     end
 end

@@ -20,7 +20,10 @@ RSpec.describe "Games API", :type => :request do
 
             it 'returns a valid game' do
                 json = JSON.parse(response.body)
-                expect(json).to eq({id: 1, start_time: time, end_time: nil, service_id: 1})
+                expect(json['id']).to eq(1)
+                expect(json['start_time']).to eq(time.to_i)
+                expect(json['end_time']).to be(nil)
+                expect(json['service_id']).to eq(2)
             end
         end
     end
