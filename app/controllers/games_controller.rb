@@ -13,13 +13,13 @@ class GamesController < ApplicationController
     end
 
     def show
-        game = Game.find(game_params[:game_id])
+        game = Game.find(game_params[:id])
         render json: game, status: :ok
     end
 
     private
 
     def game_params
-        params.require(:game).permit(:game_id, :id, :players => [:first_name, :last_name, :service])
+        params.permit(:game_id, :game, :id, :players => [:first_name, :last_name, :service])
     end
 end
