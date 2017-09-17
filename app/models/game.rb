@@ -1,7 +1,7 @@
 class Game < ApplicationRecord
     has_many :player_games
     has_many :points
-    belongs_to :service, foreign_key: :service_id, class_name: 'Player'
+    belongs_to :service, foreign_key: :service_id, class_name: 'Player', optional: true
 
     def players
         player_games.map { |g| g.player }
