@@ -8,9 +8,9 @@ RSpec.describe 'Points API', type: :request do
         context 'when a point is scored' do
             it 'creates a point record' do
                 json = JSON.parse(response.body)
-                expect(json['game_id']).to eq(1)
+                expect(json['point_id']).to eq(1)
                 expect(json['player_id']).to eq(1)
-                expect(json['created_at']).to_not be(nil)
+                expect(json['scored_at']).to_not be(nil)
             end
         end
     end
