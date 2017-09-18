@@ -6,13 +6,11 @@ RSpec.describe "Games API", :type => :request do
         let (:time) { Time.current }
         let (:game_attributes) do
             { 
-                game: { 
-                    players: [
-                        {first_name: 'Barney', last_name: 'Stinson', service: true},
-                        {first_name: 'Robin', last_name: 'Sherbatzky', service: false}
-                    ],
-                    start_time: time
-                }
+                players: [
+                    {first_name: 'Barney', last_name: 'Stinson', service: true},
+                    {first_name: 'Robin', last_name: 'Sherbatzky', service: false}
+                ],
+                start_time: time
             }
         end
         context 'create a valid game' do
@@ -23,7 +21,7 @@ RSpec.describe "Games API", :type => :request do
                 expect(json['id']).to eq(1)
                 expect(json['start_time']).to eq(time.to_i)
                 expect(json['end_time']).to be(nil)
-                expect(json['service_id']).to eq(2)
+                expect(json['current_service']['id']).to eq(2)
             end
         end
     end

@@ -1,6 +1,6 @@
 class PointsController < ApplicationController
     def create
-        point = Point.create(points_params)
+        point = Point.create!(points_params)
         render json: point, status: :created
     end
 
