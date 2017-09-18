@@ -18,7 +18,6 @@ RSpec.describe "Games API", :type => :request do
 
             it 'returns a valid game' do
                 json = JSON.parse(response.body)
-                puts json.inspect
                 expect(json['id']).to eq(1)
                 expect(json['start_time']).to eq(time.to_i)
                 expect(json['end_time']).to be(nil)

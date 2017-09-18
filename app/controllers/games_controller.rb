@@ -1,7 +1,6 @@
 class GamesController < ApplicationController
     def create
         game = Game.create!(start_time: game_params[:start_time].presence || Time.current)
-        puts game_params[:players].inspect
         game_params[:players].each do |opponent|
             player = Player.find_or_create_by!({
                 first_name: opponent[:first_name], 
